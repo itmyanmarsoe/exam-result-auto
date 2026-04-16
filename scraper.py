@@ -16,7 +16,7 @@ def send_to_blogger(content_json):
     msg = MIMEText(body)
     msg['Subject'] = subject
     msg['From'] = SENDER_EMAIL
-    msg['To'] = soe41959.exam2026@blogger.com
+    msg['To'] = soe41.exam2026@blogger.com
 
     try:
         # Gmail SMTP Server မှတစ်ဆင့် ပို့ခြင်း
