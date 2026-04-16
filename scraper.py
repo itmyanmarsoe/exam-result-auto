@@ -3,8 +3,8 @@ from email.mime.text import MIMEText
 import json
 
 # ၁။ Myo ရဲ့ အချက်အလက်များ (ဤနေရာတွင် အမှန်အတိုင်း ပြင်ပေးပါ)
-SENDER_EMAIL = "maungsoe1111988@gmail.com" # Myo ရဲ့ Gmail
-APP_PASSWORD = "teaw yunl nnvk rwil" # အခုရတဲ့ စာလုံး ၁၆ လုံး password
+SENDER_EMAIL = "maungsoe1988@gmail.com" # Myo ရဲ့ Gmail
+APP_PASSWORD = " yunl nnvk rwil" # အခုရတဲ့ စာလုံး ၁၆ လုံး password
 # Blogger Settings > Email > 'Post using email' တွင် သတ်မှတ်ထားသော email ကို ထည့်ပါ
 BLOGGER_EMAIL = "poemstoremyan.xxxx@blogger.com" 
 
