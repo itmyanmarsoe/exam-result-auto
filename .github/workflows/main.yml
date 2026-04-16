@@ -1,15 +1,14 @@
-name: Test Blogger Bot
+name: Exam Result Auto Bot
 on:
-  workflow_dispatch: # လူကိုယ်တိုင် ခလုတ်နှိပ်ပြီး မောင်းနှင်ရန်
   schedule:
-    - cron: '*/5 * * * *' # ၅ မိနစ်တစ်ခါ Website ကို စစ်ဆေးရန်
+    - cron: '*/5 * * * *' # ၅ မိနစ်တစ်ခါ Website ကို အလိုအလျောက် စစ်ဆေးမည်
+  workflow_dispatch: # လူကိုယ်တိုင် စမ်းသပ်နှိပ်ရန်
 
 jobs:
-  build:
+  run-bot:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
