@@ -24,7 +24,7 @@ def auto_process():
 
         # ၃။ Blogger API v3 လိပ်စာအပြည့်အစုံ (လူကြီးမင်း၏ Blog ID ကို အထဲမှာ တစ်ခါတည်း ထည့်ပေးထားပါသည်)
         # စာသားများကို အရှေ့အနောက် ညီအောင် ပြန်ညှိပေးထားပါသည်
-        post_url = "https://www.googleapis.com/blogger/v3/blogs/" + 4703947063207207857 + "/posts/"
+        post_url = "https://www.googleapis.com/blogger/v3/blogs/" + "4703947063207207857" + "/posts/"
         
         # Post တင်မည့် အချက်အလက်များ
         payload = {
