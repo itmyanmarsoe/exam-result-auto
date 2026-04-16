@@ -19,7 +19,7 @@ def auto_process():
                 "years": [
                     {
                         "name": "Grade 12 အောင်စာရင်း ၂၀၂၆",
-                        "href": "https://githubusercontent.com"
+                        "href": "https://github.com/itmyanmarsoe/exam-result-auto/blob/main/result.pdf"
                     }
                 ]
             }
