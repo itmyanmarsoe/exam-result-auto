@@ -1,0 +1,23 @@
+name: Exam Auto Poster
+on:
+  schedule:
+    - cron: '*/15 * * * *' # ၁၅ မိနစ်တစ်ခါ အလိုအလျောက် စစ်ဆေးမည်
+  workflow_dispatch: # ကိုယ်တိုင် လက်နဲ့ နှိပ်ပြီး စမ်းသပ်ချင်ရင်လည်း ရအောင်လုပ်ထားခြင်း
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install Requests
+        run: pip install requests
+
+      - name: Run Scraper
+        run: python scraper.py
