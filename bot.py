@@ -2,16 +2,16 @@ import requests
 import json
 import os
 
-# GitHub Secrets မှ BLOG_ID နှင့် API_KEY ကို အလိုအလျောက် ယူပါမည်
+# GitHub Secrets မှ အချက်အလက်များကို ယူခြင်း
 BLOG_ID = os.environ.get('BLOG_ID')
 API_KEY = os.environ.get('BLOGGER_API_KEY')
 
 def auto_process():
     try:
-        # ၁။ PDF ရဲ့ Raw Link အပြည့်အစုံ (လူကြီးမင်းအတွက် ကျွန်မ ကိုယ်တိုင် ဖြည့်ပေးထားပါသည်)
+        # ၁။ PDF Raw Link
         raw_pdf_url = "https://raw.githubusercontent.com/itmyanmarsoe/exam-result-auto/main/result.pdf"
 
-        # ၂။ JSON Data ပုံစံအမှန်
+        # ၂။ JSON Data ပုံစံ
         result_data = {
             "years": [
                 {
@@ -22,11 +22,9 @@ def auto_process():
         }
         json_content = json.dumps(result_data, ensure_ascii=False)
 
-        # ၃။ Blogger API v3 လိပ်စာအပြည့်အစုံ (လူကြီးမင်းအတွက် ကျွန်မ ကိုယ်တိုင် ဖြည့်ပေးထားပါသည်)
-      #  post_url = "https://googleapis.com" + BLOG_ID + "/posts/"
-
-# ဤလိပ်စာသည် v3 ရော၊ Blog ID ရော အပြည့်အစုံ ပါဝင်ပြီးသား ဖြစ်ပါသည်
-post_url = "https://www.googleapis.com/blogger/v3/blogs/" + 4703947063207207857 + "/posts/"
+        # ၃။ Blogger API v3 လိပ်စာအပြည့်အစုံ (လူကြီးမင်း၏ Blog ID ကို အထဲမှာ တစ်ခါတည်း ထည့်ပေးထားပါသည်)
+        # စာသားများကို အရှေ့အနောက် ညီအောင် ပြန်ညှိပေးထားပါသည်
+        post_url = "https://www.googleapis.com/blogger/v3/blogs/" + 4703947063207207857 + "/posts/"
         
         # Post တင်မည့် အချက်အလက်များ
         payload = {
