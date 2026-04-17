@@ -23,8 +23,10 @@ def auto_process():
         json_content = json.dumps(result_data, ensure_ascii=False)
 
         # ၃။ Blogger API v3 လိပ်စာအပြည့်အစုံ (://googleapis.com နှင့် v3/blogs အားလုံး ပါဝင်ပြီးသားဖြစ်သည်)
-        post_url = "https://googleapis.com/blogger/v3/blogs/"+BLOG_ID+"/posts/"
-        
+                # ၃။ Blogger API v3 လိပ်စာ (ပိုမိုသေချာသော ပုံစံဖြင့် ရေးထားပါသည်)
+        # အောက်ပါအတိုင်း BLOG_ID ကို middle မှာ ထည့်ထားပါသည်
+        post_url = f"https://googleapis.com{BLOG_ID}/posts"
+
         # Post တင်မည့် အချက်အလက်များ
         payload = {
             "kind": "blogger#post",
