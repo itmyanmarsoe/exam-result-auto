@@ -15,8 +15,12 @@ def auto_process():
         json_content = json.dumps(result_data, ensure_ascii=False)
 
         # Blogger API v3 URL (www. ပါရပါမည်၊ ကြယ်ပွင့်များ မပါရပါ)
-        post_url = "https://googleapis.com"+str(BLOG_ID)+"/posts/"
-        
+        # API Key ကို URL ထဲမှာ တစ်ခါတည်း တွဲထည့်လိုက်တဲ့ နည်းလမ်းဖြစ်ပါတယ်
+        post_url = f"https://googleapis.com{BLOG_ID}/posts?key={API_KEY}"
+
+# ပြီးရင် အောက်က line ကို ဒီအတိုင်း ပြောင်းပါ
+#r = requests.post(post_url, json=payload) 
+
         # Post တင်မည့် အချက်အလက်များ
         payload = {
             "kind": "blogger#post",
