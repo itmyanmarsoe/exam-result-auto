@@ -2,13 +2,13 @@ import requests
 import json
 import os
 
-# GitHub Secrets မှ BLOG_ID နှင့် API_KEY ကို အလိုအလျောက် ယူပါမည်
+# GitHub Secrets မှ အချက်အလက်များကို ယူခြင်း
 BLOG_ID = os.environ.get('BLOG_ID')
 API_KEY = os.environ.get('BLOGGER_API_KEY')
 
 def auto_process():
     try:
-        # ၁။ PDF ရဲ့ Raw Link အပြည့်အစုံ (လူကြီးမင်းအတွက် ကျွန်မ ဖြည့်ပေးထားပါသည်)
+        # ၁။ PDF ရဲ့ Raw Link အပြည့်အစုံ
         raw_pdf_url = "https://githubusercontent.com"
 
         # ၂။ JSON Data ပုံစံအမှန်
@@ -22,11 +22,9 @@ def auto_process():
         }
         json_content = json.dumps(result_data, ensure_ascii=False)
 
-        # ၃။ Blogger API v3 လိပ်စာအပြည့်အစုံ (://googleapis.com နှင့် v3/blogs အားလုံး ပါဝင်ပြီးသားဖြစ်သည်)
-                # ၃။ Blogger API v3 လိပ်စာ (ပိုမိုသေချာသော ပုံစံဖြင့် ရေးထားပါသည်)
-        # အောက်ပါအတိုင်း BLOG_ID ကို middle မှာ ထည့်ထားပါသည်
-        post_url = f"https://googleapis.com{BLOG_ID}/posts"
-
+        # ၃။ Blogger API v3 လိပ်စာအပြည့်အစုံ (ဒီတစ်ခါ လုံးဝ အမှားမရှိစေရပါ)
+        # လိပ်စာကို အပိုင်းလိုက်မခွဲဘဲ တစ်ဆက်တည်း ရေးပေးထားပါတယ်
+        post_url = "https://googleapis.com"+str(BLOG_ID)+"/posts"
         # Post တင်မည့် အချက်အလက်များ
         payload = {
             "kind": "blogger#post",
@@ -34,13 +32,12 @@ def auto_process():
             "content": "<pre>" + json_content + "</pre>"
         }
         
-        # API Key ဖြင့် Blogger သို့ ပို့လွှတ်ခြင်း
+        # API ခေါ်ယူခြင်း
         r = requests.post(post_url, params={'key': API_KEY}, json=payload)
         
         if r.status_code == 200:
             print("အောင်မြင်စွာ တင်ပြီးပါပြီ။ Blog ကို စစ်ကြည့်ပါရှင်။")
         else:
-            # အကယ်၍ မရခဲ့ပါက အကြောင်းရင်းကို ဤနေရာတွင် ပြပါမည်
             print("Error Code: " + str(r.status_code))
             print("Message: " + r.text)
 
