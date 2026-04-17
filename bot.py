@@ -9,7 +9,7 @@ API_KEY = os.environ.get('BLOGGER_API_KEY')
 def auto_process():
     try:
         # ၁။ PDF ရဲ့ Raw Link အပြည့်အစုံ
-        raw_pdf_url = "https://githubusercontent.com"
+        raw_pdf_url = "https://raw.githubusercontent.com/itmyanmarsoe/exam-result-auto/main/result.pdf"
 
         # ၂။ JSON Data ပုံစံအမှန်
         result_data = {
@@ -25,7 +25,7 @@ def auto_process():
         # ၃။ Blogger API v3 လိပ်စာအပြည့်အစုံ (အမှားကင်းအောင် တစ်ဆက်တည်း ရေးပေးထားပါသည်)
         # ဤနေရာတွင် ကြယ်ပွင့်များ လုံးဝမပါရပါ
         post_url = "https://googleapis.com" + str(BLOG_ID) + "/posts"
-        
+        post_url="https://www.googleapis.com/blogger/v3/blogs/"+"4703947063207207857"+"/posts/"
         # Post တင်မည့် အချက်အလက်များ
         payload = {
             "kind": "blogger#post",
