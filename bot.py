@@ -19,7 +19,7 @@ def auto_process():
         post_url = f"https://googleapis.com{BLOG_ID}/posts?key={API_KEY}"
 
 # ပြီးရင် အောက်က line ကို ဒီအတိုင်း ပြောင်းပါ
-#r = requests.post(post_url, json=payload) 
+        r = requests.post(post_url, json=payload) 
 
         # Post တင်မည့် အချက်အလက်များ
         payload = {
