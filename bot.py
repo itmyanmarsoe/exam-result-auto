@@ -15,7 +15,7 @@ def auto_process():
         json_content = json.dumps(result_data, ensure_ascii=False)
 
         # Blogger API v3 URL (www. ပါရပါမည်၊ ကြယ်ပွင့်များ မပါရပါ)
-        post_url = "https://googleapis.com" + str(BLOG_ID) + "/posts/"
+        post_url = "https://googleapis.com"+str(BLOG_ID)+"/posts/"
         
         # Post တင်မည့် အချက်အလက်များ
         payload = {
