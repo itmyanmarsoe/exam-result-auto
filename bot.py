@@ -22,9 +22,10 @@ def auto_process():
         }
         json_content = json.dumps(result_data, ensure_ascii=False)
 
-        # ၃။ Blogger API v3 လိပ်စာအပြည့်အစုံ (ဒီတစ်ခါ လုံးဝ အမှားမရှိစေရပါ)
-        # လိပ်စာကို အပိုင်းလိုက်မခွဲဘဲ တစ်ဆက်တည်း ရေးပေးထားပါတယ်
-        post_url = "https://googleapis.com"+str(BLOG_ID)+"/posts"
+        # ၃။ Blogger API v3 လိပ်စာအပြည့်အစုံ (အမှားကင်းအောင် တစ်ဆက်တည်း ရေးပေးထားပါသည်)
+        # ဤနေရာတွင် ကြယ်ပွင့်များ လုံးဝမပါရပါ
+        post_url = "https://googleapis.com" + str(BLOG_ID) + "/posts"
+        
         # Post တင်မည့် အချက်အလက်များ
         payload = {
             "kind": "blogger#post",
