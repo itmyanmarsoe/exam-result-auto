@@ -32,7 +32,7 @@ def auto_process():
         }
         
         # API Key ဖြင့် Blogger သို့ ပို့လွှတ်ခြင်း
-        r = requests.post(post_url, params={'key':"AIzaSyDDbj97ieFihfuOqEMHVd14_4qHfjdZh2g"},json=payload)
+        r = requests.post(post_url, params={'key"},json=payload)
         
         if r.status_code == 200:
             print("အောင်မြင်စွာ တင်ပြီးပါပြီ။ Blog ကို စစ်ကြည့်ပါရှင်။")
