@@ -9,7 +9,7 @@ API_KEY = os.environ.get('BLOGGER_API_KEY')
 def auto_process():
     try:
         # ၁။ PDF Raw Link
-        raw_pdf_url = "https://githubusercontent.com"
+        raw_pdf_url = "https://raw.githubusercontent.com/itmyanmarsoe/exam-result-auto/main/result.pdf"
 
         # ၂။ JSON Data ပုံစံအမှန်
         result_data = {
