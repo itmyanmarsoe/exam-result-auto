@@ -24,7 +24,7 @@ def auto_process():
         # ၃။ Blogger API v3 URL (လိပ်စာကို ပုံသေစာသားအဖြစ် ပြင်ဆင်ပေးထားပါသည်)
         # ဤနေရာတွင် www. ပါဝင်အောင်နှင့် လိပ်စာ အဆုံးသတ် မှန်ကန်အောင် ပြင်ထားပါသည်
     #    post_url = "https://googleapis.com" + str(BLOG_ID) + "/posts"
-    post_url  = "https://www.googleapis.com/blogger/v3/blogs/" +"4703947063207207857" + "/posts"
+    post_url  = "https://www.googleapis.com/blogger/v3/blogs/" +str(BLOG_ID)+"/posts"
         # Post တင်မည့် အချက်အလက်များ
         payload = {
             "kind": "blogger#post",
