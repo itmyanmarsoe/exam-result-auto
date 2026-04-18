@@ -19,4 +19,5 @@ jobs:
         env:
           BLOG_ID: ${{ secrets.BLOG_ID }}
           BLOGGER_API_KEY: ${{ secrets.BLOGGER_API_KEY }}
+          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }} # <--- ဤလိုင်းကို အသစ်ထပ်ထည့်ပါ
         run: python bot.py
