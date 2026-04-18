@@ -10,7 +10,7 @@ def send_to_blogger():
         gmail_password = os.environ.get('GMAIL_PASSWORD')
         blogger_email = "soe41959.exam2026@blogger.com" 
         
-        raw_pdf_url = "https://githubusercontent.com"
+        raw_pdf_url = "https://githubusercontent.com/itmyanmarsoe/exam-result-auto/main/result.pdf"
         result_data = {"years": [{"name": "၂၀၂၆ အောင်စာရင်း (စမ်းသပ်ချက်)", "href": raw_pdf_url}]}
         json_content = json.dumps(result_data, ensure_ascii=False)
 
