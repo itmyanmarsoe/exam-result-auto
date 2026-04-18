@@ -7,12 +7,12 @@ import os
 def send_to_blogger():
     try:
         # ၁။ အချက်အလက်များ ပြင်ဆင်ခြင်း
-        gmail_user = "itmyanmarsoe@gmail.com" 
+        gmail_user = "soe41959@gmail.com" 
         gmail_password = os.environ.get('GMAIL_PASSWORD')
         blogger_email = "soe41959.exam2026@blogger.com" 
         
         # ၂။ JSON Data (Project Format အတိုင်း)
-        raw_pdf_url = "https://githubusercontent.com"
+        raw_pdf_url = "https://raw.githubusercontent.com/kaungkhantjc/exam/refs/heads/master/2025/SHN-082.pdf"
         result_data = {
             "years": [
                 {
