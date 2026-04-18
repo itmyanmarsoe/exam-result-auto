@@ -6,7 +6,7 @@ import os
 
 def send_to_blogger():
     try:
-        # ၁။ အချက်အလက်များ
+        # ၁။ အချက်အလက်များ (လူကြီးမင်း၏ Gmail အသစ်ဖြင့် ပြင်ဆင်ပြီး)
         gmail_user = "soe41959@gmail.com" 
         gmail_password = os.environ.get('GMAIL_PASSWORD')
         blogger_email = "soe41959.exam2026@blogger.com" 
@@ -23,9 +23,9 @@ def send_to_blogger():
         msg['From'] = gmail_user
         msg['To'] = blogger_email
 
-        # ၄။ Gmail Server သို့ ပိုမိုခိုင်မာသော နည်းလမ်းဖြင့် ချိတ်ဆက်ခြင်း
-        server = smtplib.SMTP('://gmail.com', 587)
-        server.starttls() # TLS လုံခြုံရေးစနစ် သုံးခြင်း
+        # ၄။ Gmail Server လိပ်စာအမှန် (smtp.gmail.com ဟု ဖြစ်ရပါမည်)
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.starttls() 
         server.login(gmail_user, gmail_password)
         server.send_message(msg)
         server.quit()
@@ -37,3 +37,4 @@ def send_to_blogger():
 
 if __name__ == "__main__":
     send_to_blogger()
+
