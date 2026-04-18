@@ -6,15 +6,9 @@ import os
 
 def send_to_blogger():
     try:
-        # ၁။ Gmail နှင့် Secret Password ကို လုံလုံခြုံခြုံ ယူခြင်း
+        # ၁။ အချက်အလက်များ
         gmail_user = "soe41959@gmail.com" 
         gmail_password = os.environ.get('GMAIL_PASSWORD')
-        
-        # အကယ်၍ Password မရှိပါက Error ပြခိုင်းပါမည်
-        if gmail_password is None:
-            print("Error: GMAIL_PASSWORD ကို Secrets ထဲမှာ ရှာမတွေ့ပါ။")
-            return
-
         blogger_email = "soe41959.exam2026@blogger.com" 
         
         # ၂။ JSON Data
@@ -29,7 +23,7 @@ def send_to_blogger():
         msg['From'] = gmail_user
         msg['To'] = blogger_email
 
-        # ၄။ Gmail Server သို့ လုံခြုံစွာ ချိတ်ဆက်ခြင်း
+        # ၄။ Gmail Server လိပ်စာအမှန် (://gmail.com ဟု အတိအကျ ဖြစ်ရပါမည်)
         server = smtplib.SMTP('://gmail.com', 587)
         server.starttls() 
         server.login(gmail_user, gmail_password)
@@ -43,3 +37,4 @@ def send_to_blogger():
 
 if __name__ == "__main__":
     send_to_blogger()
+
