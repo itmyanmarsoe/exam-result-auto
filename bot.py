@@ -4,26 +4,27 @@ import os
 
 def auto_process():
     try:
-        # ၁။ Secrets ထဲကနေ Key တွေကို ယူမယ်
-        BLOG_ID = os.environ.get('BLOG_ID')
-        API_KEY = os.environ.get('BLOGGER_API_KEY')
+        # ၁။ Secrets ယူခြင်း
+        BID = os.environ.get('BLOG_ID')
+        AKEY = os.environ.get('BLOGGER_API_KEY')
 
         # ၂။ PDF Link နှင့် JSON Data
-        raw_pdf_url = "https://raw.githubusercontent.com/itmyanmarsoe/exam-result-auto/main/result.pdf"
-        result_data = {"years": [{"name": "၂၀၂၆ အောင်စာရင်း (စမ်းသပ်ချက်)", "href": raw_pdf_url}]}
-        json_content = json.dumps(result_data, ensure_ascii=False)
+        pdf_url = "https://raw.githubusercontent.com/itmyanmarsoe/exam-result-auto/main/result.pdf"
+        data = {"years": [{"name": "၂၀၂၆ အောင်စာရင်း (Bot Test)", "href": pdf_url}]}
+        json_body = json.dumps(data, ensure_ascii=False)
 
-        # ၃။ Blogger API URL (v3)
-        post_url = f"https://googleapis.com{BLOG_ID}/posts/"
+        # ၃။ Blogger API URL (စာကြောင်းတစ်ခုတည်း အပြည့်အစုံ ရေးထားပါသည်)
+        # ဤနေရာတွင် *** တွေ ကပ်မပါအောင် String formatting သေချာလုပ်ထားပါသည်
+        final_url = "https://googleapis.com" % BID
         
         payload = {
             "kind": "blogger#post",
             "title": "2026",
-            "content": f"<pre>{json_content}</pre>"
+            "content": f"<pre>{json_body}</pre>"
         }
         
-        # ၄။ တိုက်ရိုက် ပို့လွှတ်ခြင်း (၅ စက္ကန့်အတွင်း ပြီးပါသည်)
-        r = requests.post(post_url, params={'key': API_KEY}, json=payload, timeout=20)
+        # ၄။ တိုက်ရိုက် ပို့လွှတ်ခြင်း
+        r = requests.post(final_url, params={'key': AKEY}, json=payload, timeout=30)
         
         if r.status_code == 200:
             print("အောင်မြင်စွာ တင်ပြီးပါပြီ။ Blog ကို စစ်ကြည့်ပါရှင်။")
