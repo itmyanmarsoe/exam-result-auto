@@ -1,36 +1,38 @@
-import smtplib
-from email.mime.text import MIMEText
+import requests
 import json
 import os
 
-def send_to_blogger():
+def auto_process():
     try:
-        # ၁။ အချက်အလက်များ
-        gmail_user = "soe41959@gmail.com" 
-        gmail_password = os.environ.get('GMAIL_PASSWORD')
-        blogger_email = "soe41959.exam2026@blogger.com" 
-        
-        # ၂။ JSON Data
+        # ၁။ Secrets ထဲကနေ Key တွေကို ယူမယ်
+        BLOG_ID = os.environ.get('BLOG_ID')
+        API_KEY = os.environ.get('BLOGGER_API_KEY')
+
+        # ၂။ PDF Link နှင့် JSON Data
         raw_pdf_url = "https://raw.githubusercontent.com/itmyanmarsoe/exam-result-auto/main/result.pdf"
-        result_data = {"years": [{"name": "၂၀၂၆ အောင်စာရင်း (Email စနစ်)", "href": raw_pdf_url}]}
+        result_data = {"years": [{"name": "၂၀၂၆ အောင်စာရင်း (စမ်းသပ်ချက်)", "href": raw_pdf_url}]}
         json_content = json.dumps(result_data, ensure_ascii=False)
 
-        # ၃။ Email ပြင်ဆင်ခြင်း
-        msg = MIMEText(f"<pre>{json_content}</pre>", "html", "utf-8")
-        msg['Subject'] = "2026"
-        msg['From'] = gmail_user
-        msg['To'] = blogger_email
-
-        # ၄။ Gmail Server သို့ Timeout (စက္ကန့် ၃၀) ထည့်ပြီး ချိတ်ဆက်ခြင်း
-        server = smtplib.SMTP_SSL('gmail.com', 465, timeout=30)
-        server.login(gmail_user, gmail_password)
-        server.send_message(msg)
-        server.quit()
+        # ၃။ Blogger API URL (v3)
+        post_url = f"https://googleapis.com{BLOG_ID}/posts/"
         
-        print("အောင်မြင်စွာ ပို့ပြီးပါပြီ။")
+        payload = {
+            "kind": "blogger#post",
+            "title": "2026",
+            "content": f"<pre>{json_content}</pre>"
+        }
+        
+        # ၄။ တိုက်ရိုက် ပို့လွှတ်ခြင်း (၅ စက္ကန့်အတွင်း ပြီးပါသည်)
+        r = requests.post(post_url, params={'key': API_KEY}, json=payload, timeout=20)
+        
+        if r.status_code == 200:
+            print("အောင်မြင်စွာ တင်ပြီးပါပြီ။ Blog ကို စစ်ကြည့်ပါရှင်။")
+        else:
+            print(f"Error Code: {r.status_code}")
+            print(f"Message: {r.text}")
 
     except Exception as e:
-        print("Error: " + str(e))
+        print(f"Bot Error: {str(e)}")
 
 if __name__ == "__main__":
-    send_to_blogger()
+    auto_process()
