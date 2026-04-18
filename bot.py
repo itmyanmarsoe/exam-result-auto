@@ -26,11 +26,14 @@ def auto_process():
         post_url = "https://www.googleapis.com/blogger/v3/blogs/" + str(BLOG_ID) + "/posts"
         
         # Post တင်မည့် အချက်အလက်များ
+                # bot.py ထဲက payload နေရာမှာ ဒါလေး အစားထိုးကြည့်ပါ
         payload = {
             "kind": "blogger#post",
             "title": "2026",
-            "content": "<pre>" + json_content + "</pre>"
+            "content": "<pre>" + json_content + "</pre>",
+            "isDraft": True # Draft အနေနဲ့ အရင်ပို့ကြည့်ရန်
         }
+
         
         # API Key ဖြင့် Blogger သို့ ပို့လွှတ်ခြင်း
         r = requests.post(post_url, params={'key': API_KEY}, json=payload)
